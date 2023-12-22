@@ -1,0 +1,4890 @@
+{
+	"info": {
+		"_postman_id": "3a66f503-1f6c-41b5-a8ed-bfcad36b647f",
+		"name": "Freshservice",
+		"description": "This collection makes heavy use of the variables in the collection. You should specify your API key in the authorization section of the collection as the username in the Basic auth type and the password field should remain empty.\n\nWhile you can edit the endpoints etc with the value, editing the fields in the collection variables can make it easier to transition between each request type as needed.\n\nThe entirety of the API documentation can be found here: [https://api.freshservice.com/](https://api.freshservice.com/#custom-objects)\n\nInside each folder, a direct link to the corresponding section of the API documentation is provided as well if there is one.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21356516"
+	},
+	"item": [
+		{
+			"name": "Announcements",
+			"item": [
+				{
+					"name": "Create an announcement",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Email Service Outage\", \r\n    \"body_html\": \"<h2>Email Service is down</h2> <p>Service will be up and running in 2 hours</p>\", \r\n    \"visible_from\": \"2020-02-26T11:19:45.994Z\", \r\n    \"visible_till\": \"2020-02-27T11:19:45.994Z\", \r\n    \"visibility\": \"grouped_visibility\", \r\n    \"departments\": [ 19456, 23432 ], \r\n    \"groups\": [ 34231 ], \r\n    \"additional_emails\": [ \"abc@xyz.com\" ], \r\n    \"workspace_id\": 2 \r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/announcements",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"announcements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete announcement",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/announcements/{{announcement.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"announcements",
+								"{{announcement.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all announcements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/announcements",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"announcements"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "",
+									"description": "[archived | active | scheduled | unread]",
+									"disabled": true
+								},
+								{
+									"key": "workspace_id",
+									"value": null,
+									"description": "If a workspace_id is not specified as a URL parameter, only announcements from the primary workspace will be included in the response. If workspace_id is specified as 0, announcements from across all workspaces will be included in the response. Applicable only to accounts on the Employee Support Mode.",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update announcement",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"[Restored] Email Service Outage\", \r\n    \"body_html\": \"<h2>Email Service is up and running now</h2> <p>Service is restored</p>\", \r\n    \"visible_from\": \"2020-02-26T11:19:45.994Z\", \r\n    \"visible_till\": \"2020-02-27T11:19:45.994Z\", \r\n    \"visibility\": \"grouped_visibility\", \r\n    \"departments\": [ 19456, 23432 ], \r\n    \"groups\": [ 34231 ], \r\n    \"additional_emails\": [ \"abc@xyz.com\" ], \r\n    \"workspace_id\": 2 \r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/announcements/{{announcement.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"announcements",
+								"{{announcement.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View announcement",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/announcements/{{announcement.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"announcements",
+								"{{announcement.id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#announcements](https://api.freshservice.com/#announcements)"
+		},
+		{
+			"name": "Assets",
+			"item": [
+				{
+					"name": "Create asset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Macbook Pro\",\r\n    \"asset_type_id\": 25, \r\n    \"asset_tag\":\"ASSET-9\", \r\n    \"impact\":\"low\", \r\n    \"usage_type\":\"permanent\", \r\n    \"description\":\"13.3-inch (diagonal) LED-backlit glossy widescreen display,1440-by-900 resolution\", \r\n    \"location_id\":null, \"agent_id\":null, \r\n    \"department_id\":null, \r\n    \"group_id\":9, \"workspace_id\":3, \r\n    \"assigned_on\": \"2014-07-26T12:25:04+05:30\", \r\n    \"type_fields\": { \r\n        \"product_25\" : 10, \r\n        \"vendor_25\" : 14, \r\n        \"cost_25\":5000 , \r\n        \"salvage\":100, \r\n        \"depreciation_id\":30, \r\n        \"warranty_25\":20, \r\n        \"acquisition_date_25\":\"2018-07-26T12:25:04+05:30\", \r\n        \"warranty_expiry_date_25\":\"2018-07-26T12:25:04+05:30\", \r\n        \"domain_25\":1, \"asset_state_25\":\"In Use\", \r\n        \"serial_number_25\":\"SW12131133\", \r\n        \"last_audit_date_25\":\"2014-07-26T12:25:04+05:30\" \r\n        } \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/assets",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update asset",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Macbook Pro 2\",\r\n    \"asset_type_id\": 25,\r\n    \"asset_tag\":\"ASSET-9\", \r\n    \"impact\":\"high\", \r\n    \"usage_type\":\"loaner\", \r\n    \"description\":\"13.3-inch (diagonal) LED-backlit glossy widescreen display,1440-by-900 resolution\", \r\n    \"location_id\":null, \r\n    \"agent_id\":null, \r\n    \"department_id\":null, \r\n    \"group_id\":9, \r\n    \"assigned_on\": \"2014-07-26T12:25:04+05:30\", \r\n    \"type_fields\": { \r\n        \"product_25\" : 10, \r\n        \"vendor_25\" : 14, \r\n        \"cost_25\":5000 , \r\n        \"salvage\":100, \r\n        \"depreciation_id\":30, \r\n        \"warranty_25\":20, \r\n        \"acquisition_date_25\":\"2018-07-26T12:25:04+05:30\", \r\n        \"warranty_expiry_date_25\":\"2018-07-26T12:25:04+05:30\", \r\n        \"domain_25\":1, \r\n        \"asset_state_25\":\"In Use\", \r\n        \"serial_number_25\":\"SW12131133\", \r\n        \"last_audit_date_25\":\"2014-07-26T12:25:04+05:30\" \r\n        } \r\n}"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/assets",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View asset",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/assets/{{assettype.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"assets",
+								"{{assettype.id}}"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "type_fields",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View all assets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/assets",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#create_an_asset](https://api.freshservice.com/#create_an_asset)"
+		},
+		{
+			"name": "Asset Types",
+			"item": [
+				{
+					"name": "Create an asset type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Chromebook\", \r\n    \"parent_asset_type_id\": 8, \r\n    \"description\":\"Asset type for all chromebooks\"\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/asset_types",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"asset_types"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all asset types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/asset_types",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"asset_types"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all fields of an asset type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/asset_types/{{assettype.id}}/fields",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"asset_types",
+								"{{assettype.id}}",
+								"fields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an asset type",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\":\"Chromebooks Asset Type\", \r\n    \"visible\": false\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/asset_types/{{assettype.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"asset_types",
+								"{{assettype.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View an asset type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/asset_types/{{assettype.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"asset_types",
+								"{{assettype.id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#asset-types](https://api.freshservice.com/#asset-types)"
+		},
+		{
+			"name": "Audit Logs",
+			"item": [
+				{
+					"name": "Export audit logs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"since\": \"2021-12-10T00:00:00Z\", \r\n    \"before\": \"2022-02-23T00:00:00Z\" \r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/audit_log/export",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"audit_log",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#audit-logs](https://api.freshservice.com/#audit-logs)"
+		},
+		{
+			"name": "Business Hours",
+			"item": [
+				{
+					"name": "View specific business hours configuration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/business_hours/{{bh.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"business_hours",
+								"{{bh.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of business hours configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/business_hours",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"business_hours"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#business-hours](https://api.freshservice.com/#business-hours)"
+		},
+		{
+			"name": "Canned Responses",
+			"item": [
+				{
+					"name": "View a canned response",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/canned_responses/{{response.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"canned_responses",
+								"{{response.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View canned response folder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/canned_response_folders/{{responsefolder.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"canned_response_folders",
+								"{{responsefolder.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of canned response folders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/canned_response_folders",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"canned_response_folders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of canned responses in a folder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/canned_response_folders/{{responsefolder.id}}/canned_responses",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"canned_response_folders",
+								"{{responsefolder.id}}",
+								"canned_responses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of canned responses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/canned_responses",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"canned_responses"
+							],
+							"query": [
+								{
+									"key": "workspace_id",
+									"value": null,
+									"description": "'workspace_id' is applicable only for accounts on the Employee Support Mode. The value 1 for workspace_id will return all global canned responses",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#canned-responses](https://api.freshservice.com/#canned-responses)"
+		},
+		{
+			"name": "Changes",
+			"item": [
+				{
+					"name": "Add note to change",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"body\": \"Message goes here\" \r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/changes/{{ticket.id}}/notes",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"changes",
+								"{{ticket.id}}",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add task to change",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"due_date\": \"2020-04-03T10:26:13.067Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\", \r\n    \"description\": \"We need to re-supply to win the war!\"\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/changes/{{ticket.id}}/tasks",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"changes",
+								"{{ticket.id}}",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Change ticket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/changes/{{ticket.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"changes",
+								"{{ticket.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all change fields",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/change_form_fields",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"change_form_fields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update change",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"priority\": 3 \r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/changes/{{ticket.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"changes",
+								"{{ticket.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View all change notes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"priority\": 3 \r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/changes/{{ticket.id}}/notes",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"changes",
+								"{{ticket.id}}",
+								"notes"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#view_a_change](https://api.freshservice.com/#view_a_change)"
+		},
+		{
+			"name": "Contracts",
+			"item": [
+				{
+					"name": "Create a contract",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Adobe contract\", \r\n    \"description\": \"\", \r\n    \"vendor_id\": 7, \r\n    \"auto_renew\": true, \r\n    \"notify_expiry\": true, \r\n    \"notify_before\": 30, \r\n    \"approver_id\": 12, \r\n    \"start_date\": \"2021-06-11T10:26:17Z\", \r\n    \"end_date\": \"2022-06-11T10:26:17Z\", \r\n    \"cost\": 1500.33, \r\n    \"contract_number\": \"ADB12\", \r\n    \"contract_type_id\": 3, \r\n    \"visible_to_id\": 4, \r\n    \"notify_to\": [\r\n        \"agent_name@freshworks.com\"\r\n        ], \r\n    \"custom_fields\": { \r\n        \"cf_vendor_location\": \"Chennai\" \r\n        }, \r\n    \"software_id\": 3, \r\n    \"billing_cycle\": \"annual\", \r\n    \"item_cost_details\": [ \r\n        { \r\n            \"item_name\": \"Installation\", \r\n            \"pricing_model\": \"per_unit\", \r\n            \"cost\": 200, \r\n            \"count\": 1 \r\n            } \r\n        ], \r\n    \"future_contract_id\": 6, \r\n    \"requester_id\": 4, \r\n    \"delegatee_id\": 2, \r\n    \"workspace_id\": 2 \r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/contract_types",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"contract_types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all contract types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/contract_types",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"contract_types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all contracts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/contracts",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all fields of a contract type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/contract_types/[contract_type_id]/fields",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"contract_types",
+								"[contract_type_id]",
+								"fields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all assets associated with a contract",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/contracts/{{contract.id}}/associated-assets",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"contracts",
+								"{{contract.id}}",
+								"associated-assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a contract",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Adobe contract\", \r\n    \"description\": \"\", \r\n    \"vendor_id\": 7, \r\n    \"auto_renew\": true, \r\n    \"notify_expiry\": true, \r\n    \"notify_before\": 30, \r\n    \"approver_id\": 12, \r\n    \"start_date\": \"2021-06-11T10:26:17Z\", \r\n    \"end_date\": \"2022-06-11T10:26:17Z\", \r\n    \"cost\": 1500.33, \r\n    \"contract_number\": \"ADB12\", \r\n    \"visible_to_id\": 4, \r\n    \"notify_to\": [\"agent_name@freshworks.com\"], \r\n    \"custom_fields\": {\r\n         \"cf_vendor_location\": \"Chennai\" \r\n         }, \r\n    \"billing_cycle\": \"annual\", \r\n    \"item_cost_details\": [{ \r\n        \"id\" : 1, \r\n        \"item_name\": \"Installation\", \r\n        \"pricing_model\": \"per_unit\", \r\n        \"cost\": 200, \"count\": 1 \r\n        }], \r\n    \"future_contract_id\": 6, \r\n    \"requester_id\": 4, \r\n    \"delegatee_id\": 2, \r\n    \"associated_asset_ids\": [10,11], \r\n    \"workspace_id\": 2 }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/contracts/{{contract.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"contracts",
+								"{{contract.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a contract",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/contracts/{{contract.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"contracts",
+								"{{contract.id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#contracts](https://api.freshservice.com/#contracts)"
+		},
+		{
+			"name": "Custom Objects",
+			"item": [
+				{
+					"name": "Get Custom Object",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/objects/{{object.id}}/records",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"objects",
+								"{{object.id}}",
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Custom Object With Query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/objects/{{object.id}}/records?query=",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"objects",
+								"{{object.id}}",
+								"records"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#custom-objects](https://api.freshservice.com/#custom-objects)"
+		},
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "Update department",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Department for the Regulation and Control of Magical Creatures\",\r\n    \"description\":\"Beast, Being and Spirit Divisions, and Pest Advisory Bureau.\",\r\n    \"head_user_id\":5,\r\n    \"prime_user_id\":7,\r\n    \"domains\":[\"creatures.ministryofmagic.gov\"],\r\n    \"custom_fields\":{\r\n        \"location\":\"Level 3\"\r\n        }\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/departments/{{department.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"departments",
+								"{{department.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/departments/{{department.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"departments",
+								"{{department.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View department fields",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/department_fields",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"department_fields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/departments",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#department_attributes](https://api.freshservice.com/#department_attributes)"
+		},
+		{
+			"name": "Employee Onboarding",
+			"item": [
+				{
+					"name": "View list of onboarding requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/onboarding_requests",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"onboarding_requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of onboarding tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/onboarding_requests/id/tickets",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"onboarding_requests",
+								"id",
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View onboarding fields",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/onboarding_requests/form",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"onboarding_requests",
+								"form"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View onboarding request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/onboarding_requests/{{onboarding.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"onboarding_requests",
+								"{{onboarding.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create onboarding request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"fields\": {\r\n    \"cf_employee_name\": \"Andrea\",\r\n    \"cf_job_title\": \"HR\",\r\n    \"cf_date_of_joining\": \"2020-08-20\",\r\n    \"cf_all_users\": \"andrea@freshservice.com\",\r\n    \"cf_department\": \"HR\",\r\n    \"cf_assets\": 1,\r\n    \"cf_location\": 5,\r\n    \"cf_hierarchy\": \"L3\",\r\n    \"cf_verified\": true,\r\n    \"msf_area_of_expertise\": [\r\n            \"Ruby\",\r\n            \"Java\"\r\n    ],\r\n    \"msf_preferred_locations\": [53, 57]\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/onboarding_requests/",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"onboarding_requests",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#employee-onboarding](https://api.freshservice.com/#employee-onboarding)"
+		},
+		{
+			"name": "Group Management",
+			"item": [
+				{
+					"name": "Agent Groups",
+					"item": [
+						{
+							"name": "Get agent group",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/groups/{{group.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"groups",
+										"{{group.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get list of agent groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/groups",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Agent group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Linux Support\", \r\n    \"description\":\"Support team for Linux VMs, workstations, and servers\", \r\n    \"unassigned_for\":\"30m\", \r\n    \"members\":[1,16]\r\n}"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/groups/{{group.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"groups",
+										"{{group.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#agent-groups](https://api.freshservice.com/#agent-groups)"
+				},
+				{
+					"name": "Requester Groups",
+					"item": [
+						{
+							"name": "Create requester group",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"name\":\"Branch Managers\", \r\n    \"description\":\"Requester group for branch managers across all locations\"\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requester_groups",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requester_groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get list of requester groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requester_groups",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requester_groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update requester group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"name\":\"Human Resources\", \r\n    \"description\":\"Requester group all employees whose department is HR\" \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requester_groups/{{group.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requester_groups",
+										"{{group.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View requester group",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requester_groups/{{group.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requester_groups",
+										"{{group.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View requester group membership",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requester_groups/{{group.id}}/members",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requester_groups",
+										"{{group.id}}",
+										"members"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#requester-groups](https://api.freshservice.com/#requester-groups)"
+				}
+			]
+		},
+		{
+			"name": "Locations",
+			"item": [
+				{
+					"name": "Create location",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"HQ\", \r\n    \"parent_location_id\": 2, \r\n    \"primary_contact_id\": null, \r\n    \"address\": {\r\n        \"line1\": \"1250 Bayhill Drive\",\r\n        \"line2\": \"Suite 315\", \r\n        \"city\": \"San Bruno\",\r\n        \"state\": \"California\",\r\n        \"country\": \"US\",\r\n        \"zipcode\": \"94066\"\r\n        }\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/locations/",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"locations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update location",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"HeadQuaters\",\r\n    \"parent_location_id\": 2,\r\n    \"primary_contact_id\": null,\r\n    \"address\": {\r\n        \"line1\": \"1250 Bayhill Drive\",\r\n        \"line2\": \"Suite 315\",\r\n        \"city\": \"San Bruno\",\r\n        \"state\": \"California\",\r\n        \"country\": \"US\",\r\n        \"zipcode\": \"94066\"\r\n        }\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/locations/{{locale.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"locations",
+								"{{locale.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of Locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/locations",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/locations/{{locale.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"locations",
+								"{{locale.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete location",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/locations/{{locale.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"locations",
+								"{{locale.id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#locations](https://api.freshservice.com/#locations)"
+		},
+		{
+			"name": "Problems",
+			"item": [
+				{
+					"name": "Problem Tickets",
+					"item": [
+						{
+							"name": "Create a problem",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"subject\": \"Unable to reach email server\", \r\n    \"email\": \"sample@freshservice.com\", \r\n    \"description\": \"<div>Hi guys, <br/><br/>We have been facing issues when we try to reach Email Server 3. Looks like there is something wrong here.<br/><br/>Regards<br/> Rachel<br/> </div>\", \r\n    \"due_by\": \"2020-07-20T16:18:46Z\", \r\n    \"priority\": 2, \r\n    \"status\": 2, \r\n    \"impact\": 1, \r\n    \"category\": \"Hardware\", \r\n    \"sub_category\": \"Peripherals\", \r\n    \"item_category\": \"Router\", \r\n    \"agent_id\": 1, \r\n    \"group_id\": 1, \r\n    \"department_id\": 1, \r\n    \"custom_fields\": { \r\n        \"sample_text_field\": \"Sample Text\" \r\n        }, \r\n    \"analysis_fields\": { \r\n        \"problem_cause\": {\r\n             \"description\": \"Problem cause description\" }, \r\n        \"problem_symptom\": { \r\n            \"description\": \"Problem symptom description\" }, \r\n        \"problem_impact\": { \r\n                \"description\": \"Problem impact description\" } \r\n        }, \r\n    \"workspace_id\": 3 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a problem",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a problem",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"subject\": \"Unable to reach email server\", \r\n    \"email\": \"sample@freshservice.com\", \r\n    \"description\": \"<div>Hi guys, <br/><br/>We have been facing issues when we try to reach Email Server 3. Looks like there is something wrong here.<br/><br/>Regards<br/> Rachel<br/> </div>\", \r\n    \"due_by\": \"2020-07-20T16:18:46Z\", \r\n    \"priority\": 2, \r\n    \"status\": 3, \r\n    \"impact\": 2, \r\n    \"category\": \"Hardware\", \r\n    \"sub_category\": \"Peripherals\", \r\n    \"item_category\": \"Router\", \r\n    \"agent_id\": 1, \r\n    \"group_id\": 1, \r\n    \"department_id\": 1, \r\n    \"custom_fields\": { \r\n        \"sample_text_field\": \"Sample Text\" }, \r\n    \"analysis_fields\": { \r\n        \"problem_cause\": { \r\n            \"description\": \"Problem cause description\" }, \r\n        \"problem_symptom\": { \r\n            \"description\": \"Problem symptom description\" }, \r\n        \"problem_impact\": {\r\n            \"description\": \"Problem impact description\" } \r\n        } \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View a problem",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View list of problems",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#problems](https://api.freshservice.com/#problems)"
+				},
+				{
+					"name": "Problem Notes",
+					"item": [
+						{
+							"name": "Create note",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"body\": \"<div> body of the problem note </div> \"\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/notes",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"notes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete note",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/notes/{{note.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"notes",
+										"{{note.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update note",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"body\": \"<div> updated problem note </div> \"\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/notes/{{note.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"notes",
+										"{{note.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View note",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/notes/{{note.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"notes",
+										"{{note.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all notes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/notes",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"notes"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#problem_note_attributes](https://api.freshservice.com/#problem_note_attributes)"
+				},
+				{
+					"name": "Time entries",
+					"item": [
+						{
+							"name": "Delete time entry",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"note\":\"time entry update\",\r\n    \"billable\":false\r\n}"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/time_entries/{{timeentry.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"time_entries",
+										"{{timeentry.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update time entry",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"note\":\"time entry update\",\r\n    \"billable\":false\r\n}"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/time_entries/{{timeentry.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"time_entries",
+										"{{timeentry.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View time entry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/time_entries/{{timeentry.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"time_entries",
+										"{{timeentry.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all time entries",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/time_entries",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"time_entries"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create time entry",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"note\":\"test_entry\",\r\n    \"time_spent\":\"03:00\",\r\n    \"agent_id\":1,\r\n    \"billable\":true\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/time_entries",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"time_entries"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#problem_time_entry_attributes](https://api.freshservice.com/#problem_time_entry_attributes)"
+				},
+				{
+					"name": "Problem Tasks",
+					"item": [
+						{
+							"name": "Create task",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-27T13:23:20.813Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\",\r\n    \"description\": \"We need to re-supply to win the war!\", \r\n    \"workspace_id\": 3 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/tasks",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update task",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-27T13:23:20.813Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\",\r\n    \"description\": \"We need to re-supply to win the war!\", \r\n    \"workspace_id\": 3 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/tasks/{{task.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"tasks",
+										"{{task.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all tasks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-27T13:23:20.813Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\",\r\n    \"description\": \"We need to re-supply to win the war!\", \r\n    \"workspace_id\": 3 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/tasks",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View a task",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-27T13:23:20.813Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\",\r\n    \"description\": \"We need to re-supply to win the war!\", \r\n    \"workspace_id\": 3 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/problems/{{problem.id}}/tasks/{{task.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"problems",
+										"{{problem.id}}",
+										"tasks",
+										"{{task.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#problem_task_attributes](https://api.freshservice.com/#problem_task_attributes)"
+				}
+			],
+			"description": "[https://api.freshservice.com/#problems](https://api.freshservice.com/#problems)"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"XBox\", \r\n    \"asset_type_id\": 3, \r\n    \"manufacturer\": \"Flex\", \r\n    \"status\":\"In Pipeline\", \r\n    \"mode_of_procurement\":\"Buy\",\r\n    \"depreciation_type_id\":1,\r\n    \"description\":\"The Xbox 360 is a home video game console developed by Microsoft. As the successor to the original Xbox, it is the second console in the Xbox series.\"\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/products",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/products/{{product.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"products",
+								"{{product.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/products/{{product.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"products",
+								"{{product.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/products",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#products](https://api.freshservice.com/#products)"
+		},
+		{
+			"name": "Releases",
+			"item": [
+				{
+					"name": "Release fields",
+					"item": [
+						{
+							"name": "Create Release",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"agent_id\": 1, \r\n    \"group_id\": null, \r\n    \"priority\": 1, \r\n    \"status\": 1, \r\n    \"release_type\": 1,\r\n    \"subject\": \"string\", \r\n    \"planned_start_date\": \"2020-03-31T10:35:47.462Z\", \r\n    \"planned_end_date\": \"2020-03-31T10:35:47.462Z\", \r\n    \"department_id\": null, \r\n    \"category\": \"string\", \r\n    \"sub_category\": \"string\", \r\n    \"item_category\": \"string\", \r\n    \"custom_fields\": { \r\n        \"additionalProp1\": \"string\", \r\n        \"additionalProp2\": \"string\", \r\n        \"additionalProp3\": \"string\" }, \r\n    \"workspace_id\": 2, \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Release",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"agent_id\": 1, \r\n    \"group_id\": null, \r\n    \"priority\": 1, \r\n    \"status\": 1, \r\n    \"release_type\": 1,\r\n    \"subject\": \"string\", \r\n    \"planned_start_date\": \"2020-03-31T10:35:47.462Z\", \r\n    \"planned_end_date\": \"2020-03-31T10:35:47.462Z\", \r\n    \"department_id\": null, \r\n    \"category\": \"string\", \r\n    \"sub_category\": \"string\", \r\n    \"item_category\": \"string\", \r\n    \"custom_fields\": { \r\n        \"additionalProp1\": \"string\", \r\n        \"additionalProp2\": \"string\", \r\n        \"additionalProp3\": \"string\" }, \r\n    \"workspace_id\": 2, \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all release fields",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/release_form_fields",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"release_form_fields"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View list of releases",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View release",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Release Notes",
+					"item": [
+						{
+							"name": "Create note",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"body\": \"<div> body of the release note </div> \"\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/notes",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"notes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete note",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/notes/{{note.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"notes",
+										"{{note.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update note",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"body\": \"<div> body of the release note </div> \"\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/notes/{{note.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"notes",
+										"{{note.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all notes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/notes",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"notes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View note",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/notes/{{note.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"notes",
+										"{{note.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#release_note_attributes](https://api.freshservice.com/#release_note_attributes)"
+				},
+				{
+					"name": "Release Tasks",
+					"item": [
+						{
+							"name": "Create Task",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-27T13:23:20.813Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\", \r\n    \"description\": \"We need to re-supply to win the war!\", \r\n    \"workspace_id\": 3 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/tasks",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View task",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-27T13:23:20.813Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\", \r\n    \"description\": \"We need to re-supply to win the war!\", \r\n    \"workspace_id\": 3 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/tasks/{{task.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"tasks",
+										"{{task.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all tasks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-27T13:23:20.813Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\", \r\n    \"description\": \"We need to re-supply to win the war!\", \r\n    \"workspace_id\": 3 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/tasks",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a task",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"status\": 3,\r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\",\r\n    \"description\": \"We need to re-supply to win the war!\", \r\n    \"workspace_id: 2\" \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/tasks/{{task.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"tasks",
+										"{{task.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#release_task_attributes](https://api.freshservice.com/#release_task_attributes)"
+				},
+				{
+					"name": "Time Entries",
+					"item": [
+						{
+							"name": "Create time entry",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"note\":\"test_entry\",\r\n    \"time_spent\":\"03:00\",\r\n    \"agent_id\":1,\r\n    \"billable\":true\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/time_entries",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"time_entries"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete time entries",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/time_entries/{{timeentry.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"time_entries",
+										"{{timeentry.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update time entry",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"note\":\"test_entry\",\r\n    \"time_spent\":\"03:00\",\r\n    \"agent_id\":1,\r\n    \"billable\":true\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/time_entries/{{timeentry.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"time_entries",
+										"{{timeentry.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View time entry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/time_entries/{{timeentry.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"time_entries",
+										"{{timeentry.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View list of time entries",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/releases/{{release.id}}/time_entries",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"releases",
+										"{{release.id}}",
+										"time_entries"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#release_time_entry_attributes](https://api.freshservice.com/#release_time_entry_attributes)"
+				}
+			],
+			"description": "[https://api.freshservice.com/#release_attributes](https://api.freshservice.com/#release_attributes)"
+		},
+		{
+			"name": "Service Catalog",
+			"item": [
+				{
+					"name": "Create Service Catalog Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"service_item\": { \r\n        \"name\": \"Item Name\",\r\n        \"category_id\": 10000345, \r\n        \"short_description\": \"Apple Macbook Pro 13 inch\", \r\n        \"description\": \"<p>Apple Macbook Pro 13 inch - 8 GB</p>\", \r\n        \"visibility\": 2\r\n        }, \r\n    \"workspace_id\" : 3\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/service_catalog/items",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"service_catalog",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search service items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/service_catalog/items/search",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"service_catalog",
+								"items",
+								"search"
+							],
+							"query": [
+								{
+									"key": "workspace_id",
+									"value": null,
+									"description": "ID of the workspace to which the service item belongs. If not specified, it will be defaulted to the ID of the primary workspace. This attribute is applicable only to accounts on the Employee Support Mode.",
+									"disabled": true
+								},
+								{
+									"key": "search_term",
+									"value": null,
+									"description": "The keywords for which the solution articles have to be searched.\nExample: “Vpn issue”",
+									"disabled": true
+								},
+								{
+									"key": "user_email",
+									"value": null,
+									"description": "By default, the API will search the articles for the user whose API key is provided. If you want to search articles for a different user, please provide their user_email.",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": null,
+									"description": "If the returned results are more than per_page, you can use the page parameter to fetch subsequent pages.",
+									"disabled": true
+								},
+								{
+									"key": "per_page",
+									"value": null,
+									"description": "The number of results to return per page. By default, the value is set to 30.",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a service item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/service_catalog/items/{{serviceitem.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"service_catalog",
+								"items",
+								"{{serviceitem.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a list of service categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/service_catalog/categories",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"service_catalog",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View a list of service items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/service_catalog/items",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"service_catalog",
+								"items"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#service_catalog](https://api.freshservice.com/#service_catalog)"
+		},
+		{
+			"name": "SLA Policies",
+			"item": [
+				{
+					"name": "View list of SLAs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/sla_policies",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"sla_policies"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#sla-policies](https://api.freshservice.com/#sla-policies)"
+		},
+		{
+			"name": "Software",
+			"item": [
+				{
+					"name": "Software attributes",
+					"item": [
+						{
+							"name": "List licenses for software",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/applications/{{app.id}}/licenses",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"applications",
+										"{{app.id}}",
+										"licenses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update software title",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"application\": {\r\n        \"name\": \"Freshservice New\",\r\n        \"description\": \"Cloud based ITSM software\",\r\n        \"application_type\":\"saas\",\r\n        \"category\": null, \r\n        \"status\": \"managed\", \r\n        \"source\": \"API\", \r\n        \"managed_by_id\": 79560, \r\n        \"notes\": \"monthly renewal\", \r\n        \"workspace_id\": 2\r\n        }\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/applications/{{app.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"applications",
+										"{{app.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View a Software title",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/applications/{{app.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"applications",
+										"{{app.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View list of software",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/applications/",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"applications",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#software_attributes](https://api.freshservice.com/#software_attributes)"
+				},
+				{
+					"name": "Software users",
+					"item": [
+						{
+							"name": "List of software users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/applications/{{app.id}}/users",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"applications",
+										"{{app.id}}",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View software user",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/applications/{{app.id}}/users/{{requester.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"applications",
+										"{{app.id}}",
+										"users",
+										"{{requester.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#view_user](https://api.freshservice.com/#view_user)"
+				},
+				{
+					"name": "Software Installations",
+					"item": [
+						{
+							"name": "Add device to software",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"installation_machine_id\": 12, \r\n    \"installation_path\": \"/Applications/Atom.app\", \r\n    \"version\": \"1.41.0\", \r\n    \"installation_date\": \"2019-02-05T10:23:28Z\"\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/applications/{{app.id}}/installations",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"applications",
+										"{{app.id}}",
+										"installations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all installations of software",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/applications/{{app.id}}/installations",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"applications",
+										"{{app.id}}",
+										"installations"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#installation_attributes](https://api.freshservice.com/#installation_attributes)"
+				}
+			],
+			"description": "[https://api.freshservice.com/#software](https://api.freshservice.com/#software)"
+		},
+		{
+			"name": "Solutions",
+			"item": [
+				{
+					"name": "Articles",
+					"item": [
+						{
+							"name": "Create article from external url",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"title\": \"Create an article from external url\", \r\n    \"status\": 2, \r\n    \"url\": \"https://en.wikipedia.org/wiki/English_Wikipedia\", \r\n    \"folder_id\": 2, \r\n    \"tags\": [\"tag1\"], \r\n    \"keywords\": [\"keyword1\"] \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/articles/",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"articles",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create solution article",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"title\": \"Create a article\", \r\n    \"description\": \"<p>Steps: Fill in the mandatory fields ...</p>\", \r\n    \"status\": 1, \r\n    \"article_type\": 1, \r\n    \"folder_id\": 2, \r\n    \"tags\": [\"tag1\"] \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/articles",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"articles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create secondary language article",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"title\": \"Title of the solution article\", \r\n    \"description\": \"<p> Description of the solution article </p>\", \r\n    \"status\": 1, \r\n    \"article_type\": 1, \r\n    \"folder_id\": 2, \r\n    \"language\":\"ar\",\r\n    \"parent_id\": 1\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/articles/",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"articles",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update solution article",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"title\":\"Steps to create a ticket\", \r\n    \"description\":\"Steps: 1. Fill in the mandatory fields ...\" \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/articles/{{solution.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"articles",
+										"{{solution.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View solution article",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/articles/{{solution.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"articles",
+										"{{solution.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View list of solution articles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/articles?folder_id%3D",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"articles"
+									],
+									"query": [
+										{
+											"key": "folder_id%3D",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#solution-article](https://api.freshservice.com/#solution-article)"
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "View category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/categories/{{solutioncategory.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"categories",
+										"{{solutioncategory.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update category",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"name\":\"Rest API\",\r\n    \"workspace_id\": 2 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/categories/{{solutioncategory.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"categories",
+										"{{solutioncategory.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create solution category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"name\":\"API\", \r\n    \"description\":\"API related documents\", \r\n    \"visible_in_portals\":[1], \r\n    \"workspace_id\": 2 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/categories/",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"categories",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View list of categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/categories/",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"categories",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#solution-category](https://api.freshservice.com/#solution-category)"
+				},
+				{
+					"name": "Folders",
+					"item": [
+						{
+							"name": "Create solution folder",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"name\":\"Folder API\", \r\n    \"visibility\":4, \r\n    \"description\":\"Folder CRUD Operations\", \r\n    \"department_ids\": [4,5], \r\n    \"category_id\": 2 \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/folders/",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"folders",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update solution folder",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"visibility\":1, \r\n    \"description\":\"Folder API related Operations\" \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/folders/{{solutionfolder.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"folders",
+										"{{solutionfolder.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View list of solution folders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/folders/?category_id?%3D",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"folders",
+										""
+									],
+									"query": [
+										{
+											"key": "category_id?=",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View solution folder",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/solutions/folders/{{solutionfolder.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"solutions",
+										"folders",
+										"{{solutionfolder.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#solution-folder](https://api.freshservice.com/#solution-folder)"
+				}
+			],
+			"description": "[https://api.freshservice.com/#solution-category](https://api.freshservice.com/#solution-category)"
+		},
+		{
+			"name": "Ticket related",
+			"item": [
+				{
+					"name": "Conversations",
+					"item": [
+						{
+							"name": "Update Ticket - Add Note",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"body\":\"Hi tom, Still Angry\", \r\n    \"private\":false \r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/notes",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"notes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Conversation",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/conversations/{{conversation.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"conversations",
+										"{{conversation.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update conversation",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"body\":\"Can you provide some screenshots?\" \r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/conversations/{{conversation.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"conversations",
+										"{{conversation.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update ticket - Add Reply",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"body\":\"We are working on this issue. Will keep you posted.\" \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/reply",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"reply"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all conversations",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"body\":\"We are working on this issue. Will keep you posted.\" \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/conversations",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#conversations](https://api.freshservice.com/#conversations)"
+				},
+				{
+					"name": "Tasks",
+					"item": [
+						{
+							"name": "Create Task",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-03T10:26:13.067Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\", \r\n    \"description\": \"We need to re-supply to win the war!\"   \r\n}"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/tasks",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Task",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/tasks/{{task.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"tasks",
+										"{{task.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Task",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"due_date\": \"2020-04-03T10:26:13.067Z\", \r\n    \"notify_before\": 0, \r\n    \"title\": \"Supply lightsabers to all the Jedis\", \r\n    \"description\": \"We need to re-supply to win the war!\"   \r\n}"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/tasks/{{task.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"tasks",
+										"{{task.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all ticket tasks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/tasks",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View ticket task",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/tasks/{{task.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"tasks",
+										"{{task.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#ticket_task_attributes](https://api.freshservice.com/#ticket_task_attributes)"
+				},
+				{
+					"name": "Ticket manipulation",
+					"item": [
+						{
+							"name": "Create ticket",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete ticket",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"priority\": 3 \r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get requested items from ticket",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/requested_items",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"requested_items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Ticket",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"priority\": 3 \r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Ticket - Add Child Ticket",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"description\": \"Details about the issue...\", \r\n    \"subject\": \"Support Needed...\", \r\n    \"email\": \"tom@outerspace.com\", \r\n    \"priority\": 1, \r\n    \"status\": 2,\r\n    \"requester_id\": 18013341652\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/create_child_ticket",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"create_child_ticket"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all ticket fields",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/ticket_form_fields",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"ticket_form_fields"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View list of tickets",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Ticket",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View ticket activities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/activities",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"activities"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Time entry",
+					"item": [
+						{
+							"name": "View a time entry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/time_entries/{{timeentry.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"time_entries",
+										"{{timeentry.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View time entries on a ticket",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/time_entries",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"time_entries"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a time entry",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time_entry\":{\r\n        \"note\":\"test_entry\",\r\n        \"time_spent\":\"03:00\",\r\n        \"agent_id\":1\r\n        }\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/time_entries",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"time_entries"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete time entry",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time_entry\":{\r\n        \"note\":\"test_entry\",\r\n        \"time_spent\":\"03:00\",\r\n        \"agent_id\":1\r\n        }\r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/tickets/{{ticket.id}}/time_entries/{{timeentry.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tickets",
+										"{{ticket.id}}",
+										"time_entries",
+										"{{timeentry.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Source",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ticket Manager Service\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/ticket_fields/sources",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"ticket_fields",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#tickets](https://api.freshservice.com/#tickets)"
+		},
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Agents",
+					"item": [
+						{
+							"name": "Convert to requester",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/agents/{{agent.id}}/convert_to_requester",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"agents",
+										"{{agent.id}}",
+										"convert_to_requester"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Agent",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/agents/{{agent.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"agents",
+										"{{agent.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Agent",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/agents/{{agent.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"agents",
+										"{{agent.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Agent List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/agents/",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"agents",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all agent fields",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/agent_fields",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"agent_fields"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#agent_attributes](https://api.freshservice.com/#agent_attributes)"
+				},
+				{
+					"name": "Requesters",
+					"item": [
+						{
+							"name": "Convert to Agent",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "'{ \r\n    \"first_name\":\"Ronald\", \r\n    \"last_name\":\"Weasley\",\r\n    \"time_format\":\"24h\" \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requesters/{{requester.id}}/convert_to_agent",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requesters",
+										"{{requester.id}}",
+										"convert_to_agent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Requester",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "'{ \r\n    \"first_name\":\"Ronald\", \r\n    \"last_name\":\"Weasley\",\r\n    \"time_format\":\"24h\" \r\n    }"
+								},
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requesters/{{requester.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requesters",
+										"{{requester.id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all requester fields",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requester_fields",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requester_fields"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Requester",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{instancename}}.freshservice.com/api/v2/requesters/{{requester.id}}",
+									"protocol": "https",
+									"host": [
+										"{{instancename}}",
+										"freshservice",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"requesters",
+										"{{requester.id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "[https://api.freshservice.com/#requesters](https://api.freshservice.com/#requesters)"
+				}
+			]
+		},
+		{
+			"name": "Vendors",
+			"item": [
+				{
+					"name": "Create a vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Intel\",\r\n    \"description\": \"Intel Corp\", \r\n    \"primary_contact_id\": null, \r\n    \"address\": {\r\n        \"line1\": \"1250 Bayhill Drive\", \r\n        \"city\": \"San Bruno\",\r\n        \"state\": \"California\",\r\n        \"country\": \"US\",\r\n        \"zipcode\": \"94066\"\r\n        }\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/vendors",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"vendors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a vendor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/vendors/{{vendor.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"vendors",
+								"{{vendor.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of vendors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/vendors/",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"vendors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Apple\",\r\n    \"description\": \"AAPL\",\r\n    \"primary_contact_id\": null,\r\n    \"address\": {\r\n        \"line1\": \"1 Infinite Loop\",\r\n        \"city\": \"Cupertino\",\r\n        \"state\": \"California\",\r\n        \"country\": \"US\",\r\n        \"zipcode\": \"95014\"\r\n        }\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/vendors/{{vendor.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"vendors",
+								"{{vendor.id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#vendor_attributes](https://api.freshservice.com/#vendor_attributes)"
+		},
+		{
+			"name": "Purchase Order",
+			"item": [
+				{
+					"name": "Create purchase order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendor_id\":0,\r\n    \"name\":\"string\",\r\n    \"po_number\":\"string\",\r\n    \"vendor_details\":\"string\", \r\n    \"expected_delivery_date\":\"2021-02-11T14:07:44.514Z\",\r\n    \"created_at\":\"2021-02-11T14:07:44.514Z\",\r\n    \"updated_at\":\"2021-02-11T14:07:44.514Z\",\r\n    \"shipping_address\":\"string\",\r\n    \"billing_same_as_shipping\":true,\r\n    \"billing_address\":\"string\",\r\n    \"currency_code\":\"string\",\r\n    \"department_id\":0,\r\n    \"discount_percentage\":0,\r\n    \"tax_percentage\":0,\r\n    \"shipping_cost\":0,\r\n    \"custom_fields\":{},\r\n    \"purchase_items\":[\r\n        {\r\n        \"item_name\":\"string\",\r\n        \"description\":\"string\",\r\n        \"cost\":0,\r\n        \"quantity\":0,\r\n        \"tax_percentage\":0\r\n        }],\r\n    \"workspace_id\": 2\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/purchase_orders",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"purchase_orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete purchase order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/purchase_orders/{{po.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"purchase_orders",
+								"{{po.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update purchase order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendor_id\":0,\r\n    \"name\":\"string\",\r\n    \"po_number\":\"string\",\r\n    \"vendor_details\":\"string\", \r\n    \"expected_delivery_date\":\"2021-02-11T14:07:44.514Z\",\r\n    \"created_at\":\"2021-02-11T14:07:44.514Z\",\r\n    \"updated_at\":\"2021-02-11T14:07:44.514Z\",\r\n    \"shipping_address\":\"string\",\r\n    \"billing_same_as_shipping\":true,\r\n    \"billing_address\":\"string\",\r\n    \"currency_code\":\"string\",\r\n    \"department_id\":0,\r\n    \"discount_percentage\":0,\r\n    \"tax_percentage\":0,\r\n    \"shipping_cost\":0,\r\n    \"custom_fields\":{},\r\n    \"purchase_items\":[\r\n        {\r\n        \"item_name\":\"string\",\r\n        \"description\":\"string\",\r\n        \"cost\":0,\r\n        \"quantity\":0,\r\n        \"tax_percentage\":0\r\n        }],\r\n    \"workspace_id\": 2\r\n    }"
+						},
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/purchase_orders/{{po.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"purchase_orders",
+								"{{po.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View purchase order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/purchase_orders/{{po.id}}",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"purchase_orders",
+								"{{po.id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View list of purchase orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{instancename}}.freshservice.com/api/v2/purchase_orders",
+							"protocol": "https",
+							"host": [
+								"{{instancename}}",
+								"freshservice",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"purchase_orders"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://api.freshservice.com/#purchase-order](https://api.freshservice.com/#purchase-order)"
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "agent.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "asset.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "assettype.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "group.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "instancename",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "locale.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "object.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "product.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "requester.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "ticket.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "vendor.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "app.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "contract.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "department.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "bh.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "solutioncategory.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "solution.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "solutionfolder.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "serviceitem.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "announcement.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "onboarding.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "responsefolder.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "response.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "timeentry.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "task.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "problem.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "note.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "conversation.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "release.id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "po.id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
